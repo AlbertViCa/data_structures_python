@@ -39,3 +39,23 @@ class Array(object):
     def traverse(self, function=print):
         for j in range(self.__nItems):
             function(self.__a[j])
+
+    def getmaxnumber(self):
+        current = 0
+        if self.__nItems > 0:
+            for i in range(self.__nItems):
+                if isinstance(self.__a[i], (int, float)) and float(self.__a[i]) > current:
+                    current = self.__a[i]
+        return current
+
+    def deletemaxnumber(self):
+        maxNumber = self.getmaxnumber()
+        self.delete(maxNumber)
+        return maxNumber
+
+    def removedupes(self):
+        newArr = Array(self.__nItems)
+        for i in range(self.__nItems):
+            if newArr.find(self.__a[i]) == -1:
+                newArr.insert(self.__a[i])
+        return newArr
